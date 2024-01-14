@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_solution_project/home.dart';
+
+import 'main.dart';
 
 class AuthScreen extends StatefulWidget {
   @override
@@ -37,6 +40,10 @@ class _AuthScreenState extends State<AuthScreen> {
             SizedBox(height: 32),
             ElevatedButton(
               onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyHomePage()),
+                );
                 // Handle sign in button press
               },
               child: Text('Sign In'),
@@ -45,6 +52,10 @@ class _AuthScreenState extends State<AuthScreen> {
             ElevatedButton(
               onPressed: () {
                 // Handle sign up button press
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyHomePage()),
+                );
               },
               child: Text('Sign Up'),
             ),
