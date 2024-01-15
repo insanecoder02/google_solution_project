@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_solution_project/SignUp.dart';
 import 'package:google_solution_project/home.dart';
 
+import 'SignIn.dart';
 import 'main.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -42,7 +44,7 @@ class _AuthScreenState extends State<AuthScreen> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MyHomePage()),
+                  MaterialPageRoute(builder: (context) => SignIn()),
                 );
                 // Handle sign in button press
               },
@@ -54,7 +56,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 // Handle sign up button press
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MyHomePage()),
+                  MaterialPageRoute(builder: (context) => SignUp()),
                 );
               },
               child: Text('Sign Up'),
