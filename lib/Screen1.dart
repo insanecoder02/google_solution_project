@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class Screen1 extends StatelessWidget {
+  final PageController pageController;
   final VoidCallback onNextPressed;
 
-  Screen1({required this.onNextPressed});
+  Screen1({required this.pageController, required this.onNextPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class Screen1 extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image(
-                image: AssetImage('assets/images/logo.png')
+              image: AssetImage('assets/images/logo.png'),
             ),
             Text(
               'Mudah Jual Sampah',
@@ -29,10 +30,6 @@ class Screen1 extends StatelessWidget {
               style: TextStyle(fontSize: 16),
             ),
             SizedBox(height: 32),
-            ElevatedButton(
-              onPressed: onNextPressed,
-              child: Text('Next'),
-            ),
           ],
         ),
       ),

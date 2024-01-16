@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'IntroPage.dart';
 
+
 class SplashScreen extends StatefulWidget {
   @override
   _SplashScreenState createState() => _SplashScreenState();

@@ -34,16 +34,16 @@ class _SignUpState extends State<SignUp> {
         decoration: BoxDecoration(
           color: Colors.white,
         ),
-
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
               'assets/images/logo.png',
-              width: 150,  // Set the width as per your requirement
+              width: 150, // Set the width as per your requirement
               height: 150, // Set the height as per your requirement
             ),
-            SizedBox(height: 20),  // This SizedBox is now properly inside the Column
+            SizedBox(height: 20),
+            // This SizedBox is now properly inside the Column
 
             Form(
               key: _formKey,

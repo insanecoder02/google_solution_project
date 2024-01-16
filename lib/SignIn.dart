@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'MyHomePage.dart';
 import 'SignUp.dart';
 
@@ -10,18 +10,38 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
   final _formKey = GlobalKey<FormState>();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  // Function to handle sign-in
+  Future<void> signInWithEmailAndPassword() async {
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _emailController.text,
+        password: _passwordController.text,
+      );
+
+      // Successfully signed in, navigate to the home page
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => MyHomePage()),
+      );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found' || e.code == 'wrong-password') {
+        // Handle invalid email or password
+        print('Invalid email or password');
+      } else {
+        // Handle other errors
+        print('Error: $e');
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "",
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        title: Text(""),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
@@ -38,8 +58,8 @@ class _SignInState extends State<SignIn> {
             children: <Widget>[
               Image.asset(
                 'assets/images/logo.png',
-                width: 150,  // Set the width as per your requirement
-                height: 150, // Set the height as per your requirement
+                width: 150,
+                height: 150,
               ),
               Text(
                 'Welcome Back',
@@ -50,6 +70,7 @@ class _SignInState extends State<SignIn> {
               ),
               SizedBox(height: 16),
               TextFormField(
+                controller: _emailController,
                 decoration: InputDecoration(
                   labelText: 'Email address',
                 ),
@@ -62,6 +83,7 @@ class _SignInState extends State<SignIn> {
               ),
               SizedBox(height: 16),
               TextFormField(
+                controller: _passwordController,
                 decoration: InputDecoration(
                   labelText: 'Password',
                 ),
@@ -76,13 +98,8 @@ class _SignInState extends State<SignIn> {
               SizedBox(height: 16),
               ElevatedButton(
                 onPressed: () {
-
                   if (_formKey.currentState!.validate()) {
-                    // Handle form submission here.
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => MyHomePage()),
-                    );
+                    signInWithEmailAndPassword();
                   }
                 },
                 child: Text('Sign In'),
@@ -93,7 +110,7 @@ class _SignInState extends State<SignIn> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text('Don\'t have an account?'),
+                  Text("Don't have an account?"),
                   SizedBox(width: 8),
                   ElevatedButton(
                     onPressed: () {
@@ -101,7 +118,6 @@ class _SignInState extends State<SignIn> {
                         context,
                         MaterialPageRoute(builder: (context) => SignUp()),
                       );
-                      // Handle sign up button press here.
                     },
                     child: Text('Sign Up'),
                   ),

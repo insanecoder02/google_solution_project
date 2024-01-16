@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_solution_project/SignUp.dart';
-import 'package:google_solution_project/home.dart';
 
 import 'SignIn.dart';
-import 'main.dart';
 
 class AuthScreen extends StatefulWidget {
   @override
@@ -22,9 +20,7 @@ class _AuthScreenState extends State<AuthScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Image(
-                image: AssetImage('assets/images/logo.png')
-            ),
+            Image(image: AssetImage('assets/images/logo.png')),
             Text(
               'Selamat Datang',
               style: TextStyle(fontSize: 24),

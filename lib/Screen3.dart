@@ -34,10 +34,6 @@ class Screen3 extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ElevatedButton(
-                  onPressed: onBackPressed,
-                  child: Text('Back'),
-                ),
                 SizedBox(width: 16),
                 ElevatedButton(
                   onPressed: () {

@@ -1,10 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'Screen1.dart';
 import 'Screen2.dart';
 import 'Screen3.dart';
-import 'Screen4.dart';
 
 class IntroPage extends StatefulWidget {
   @override
@@ -42,6 +40,7 @@ class IntroPageState extends State<IntroPage> {
                 );
               }
             },
+            pageController: _pageController,
           ),
           Screen2(
             onBackPressed: () {
